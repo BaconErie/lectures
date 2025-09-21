@@ -1,4 +1,4 @@
-## DevClub Slidev Theme — Quick Start
+## TJ Dev Club Lectures
 
 ### Requirements
 - Node.js 18+
