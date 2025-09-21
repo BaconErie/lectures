@@ -1,0 +1,35 @@
+{
+  "name": "slidev-theme-devclub-theme",
+  "version": "0.0.0",
+  "type": "module",
+  "keywords": [
+    "slidev-theme",
+    "slidev"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "slidev build",
+    "dev": "slidev",
+    "export": "slidev export",
+    "screenshot": "slidev export --format png"
+  },
+  "dependencies": {
+    "@slidev/types": "^52.2.4"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^52.2.4"
+  },
+  "//": "Learn more: https://sli.dev/guide/write-theme.html",
+  "slidev": {
+    "colorSchema": "dark",
+    "defaults": {
+      "fonts": {
+        "sans": "IBM Plex Mono",
+        "serif": "IBM Plex Mono",
+        "mono": "IBM Plex Mono"
+      }
+    }
+  }
+}

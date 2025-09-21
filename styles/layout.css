@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&display=swap');
+
+:root {
+  /* default theme color */
+  /* can be overrided by uses `themeConfig` option */
+  --slidev-theme-primary: #0a0c10;
+  --slidev-theme-background: #0a0c10;
+  --slidev-font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  
+  /* Monaco editor and execution variables */
+  --monaco-editor-height: 200px;
+  --monaco-execution-ratio: 0.7;
+  --monaco-execution-height: calc(var(--monaco-editor-height) * var(--monaco-execution-ratio));
+  --monaco-container-height: calc(var(--monaco-editor-height) + var(--monaco-execution-height));
+  --monaco-gap: 8px;
+}
+
+.slidev-layout,
+html,
+body,
+#app {
+  font-family: var(--slidev-font-family);
+  background-color: #0a0c10;
+  font-weight: 400;
+}
+
+.slidev-layout.cover,
+.slidev-layout.intro {
+  @apply h-full grid;
+
+  p + h2,
+  ul + h2,
+  table + h2 {
+    @apply mt-10;
+  }
+}
+
+/* intro is the main content */
+.slidev-layout.intro {
+  h1 {
+    @apply text-4xl leading-20;
+    font-weight: 500;
+    /* wrap the title at half the page width */
+    max-width: 65%;
+    /* remove inline underline so we can draw a separate line below */
+    text-decoration: none;
+    /* tighter line-height for multi-line titles */
+    line-height: 1.15;
+    display: inline-block;
+  }
+
+  h1::after {
+    content: "";
+    display: block;
+    width: calc(100% + 0.5em);
+    height: 2px;
+    background-color: #3AB9D4;
+    margin-top: 0.2em;
+  }
+}
+
+/* cover-only overrides */
+.slidev-layout.cover {
+  h1 {
+    @apply text-5xl leading-20;
+    font-weight: 500;
+    /* wrap the title at half the page width */
+    max-width: 65%;
+    /* remove inline underline so we can draw a separate line below */
+    text-decoration: none;
+    /* tighter line-height for multi-line titles */
+    line-height: 1.15;
+    display: inline-block;
+  }
+
+  h1::after {
+    content: "";
+    display: block;
+    width: calc(100% + 0.5em);
+    height: 2px;
+    background-color: #3AB9D4;
+    margin-top: 0.2em;
+  }
+
+  /* tighten spacing for the first paragraph under the title */
+  h1 + p {
+    margin-top: -0.5rem;
+  }
+}
+
+.logo {
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+}
+
+.logo svg {
+  width: 65px;
+  height: 65px;
+}
+
+/* Non-cover slides: top-down flow and full-width h1 underline */
+.slidev-layout:not(.cover) h1 {
+  @apply text-3xl leading-20;
+  font-weight: 500;
+  line-height: 3rem;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  padding-bottom: 0.2em;
+  border-bottom: 2px solid #3AB9D4;
+}
+
+/* Disable any previous underline pseudo-element on non-cover */
+.slidev-layout:not(.cover) h1::after {
+  content: none;
+}
+
+.slidev-layout.last h1 {
+  border-bottom: 0 !important;
+  text-decoration: none !important;
+  font-weight: 600;
+  font-size: 2.8rem; /* ~ text-6xl */
+  line-height: 1.15;
+  width: 100%;
+  white-space: nowrap;
+}
+
+/* Ensure the last layout content area spans full width */
+.slidev-layout.last .text-center {
+  width: 100%;
+  max-width: none;
+}
+
+.page-number {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+}
+
+/* Monaco Editor and Execution Container */
+.monaco-container {
+  display: flex;
+  flex-direction: column;
+  height: var(--monaco-container-height);
+  max-height: 70vh;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #1e1e1e;
+}
+
+.monaco-editor-wrapper {
+  height: var(--monaco-editor-height);
+  min-height: var(--monaco-editor-height);
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Let Monaco manage its own scrollbars; only control height on the container */
+
+.monaco-execution-wrapper {
+  height: var(--monaco-execution-height);
+  min-height: var(--monaco-execution-height);
+  background: #ffffff;
+  overflow: auto;
+  flex-grow: 1;
+}
+
+.monaco-execution-wrapper iframe {
+  width: 100% !important;
+  height: 100% !important;
+  background: transparent !important;
+}
+
+/* Variable height adjustments */
+.monaco-container.dynamic-height {
+  height: auto;
+  max-height: 80vh;
+}
+
+.monaco-container.dynamic-height .monaco-execution-wrapper {
+  height: auto;
+  min-height: var(--monaco-execution-height);
+  max-height: calc(80vh - var(--monaco-editor-height) - var(--monaco-gap));
+}
+
+/*
+ * Slidev Monaco DOM alignment
+ * Ensure the Monaco editor and runner output scroll within fixed heights
+ * matching the theme variables defined above.
+ */
+.slidev-monaco-container {
+  border-radius: 8px;
+  background: #1e1e1e;
+  overflow: hidden;
+}
+
+/* Fix editor area to a consistent height and enable scrollbars inside */
+.slidev-monaco-container-inner {
+  height: var(--monaco-editor-height) !important;
+  min-height: var(--monaco-editor-height) !important;
+  position: relative;
+}
+
+/* The absolutely positioned inner container should fill the fixed height */
+.slidev-monaco-container-inner > .absolute {
+  height: 100% !important;
+}
+
+/* Make Monaco honor the fixed height and show scrollbars when overflowing */
+.slidev-monaco-container-inner .monaco-editor,
+.slidev-monaco-container-inner .monaco-editor .overflow-guard {
+  height: 100% !important;
+}
+
+/* Do not force overflow on Monaco internals */
+
+/* Runner (executor) area: fixed height and scrolling */
+.slidev-monaco-container .slidev-runner-output {
+  max-height: var(--monaco-execution-height);
+  overflow: auto;
+}
