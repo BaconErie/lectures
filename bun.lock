@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "slidev-theme-devclub-theme",
+      "name": "lectures",
       "dependencies": {
         "@slidev/types": "^52.2.4",
       },

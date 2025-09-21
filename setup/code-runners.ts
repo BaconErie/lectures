@@ -21,7 +21,7 @@ export default defineCodeRunnersSetup((runners: CodeRunnerProviders) => {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-      html, body { margin: 0; padding: 12px; background: #ffffff; color: #111827; }
+      html, body { margin: 0; padding: 6px; background: #ffffff; color: #111827; }
       body { font: 14px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
     </style>
   </head>

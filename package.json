@@ -1,6 +1,6 @@
 {
-  "name": "slidev-theme-devclub-theme",
-  "version": "0.0.0",
+  "name": "lectures",
+  "version": "1.0.0",
   "type": "module",
   "keywords": [
     "slidev-theme",
