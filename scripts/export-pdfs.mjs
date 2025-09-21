@@ -240,7 +240,6 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,s
 .container{max-width:1040px;margin:0 auto;padding:24px}
 .header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
-.brand img{width:36px;height:36px}
 .brand .title{font-weight:700;font-size:18px}
 .brand .subtitle{font-size:12px;color:var(--muted)}
 .nav a{color:var(--muted);text-decoration:none;margin-left:16px}
@@ -253,23 +252,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,s
 .actions a{display:inline-block;margin-right:12px;color:var(--primary);text-decoration:none}
 .actions a:hover{text-decoration:underline}
 footer{border-top:1px solid var(--border);margin-top:24px;padding-top:12px;color:var(--muted);font-size:12px}`
-  const logoSvg = `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="120" height="120" rx="20" fill="url(#g)"/>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#0ea5e9"/>
-      <stop offset="1" stop-color="#0284c7"/>
-    </linearGradient>
-  </defs>
-  <g>
-    <path d="M30 80 V40 h14 q12 0 12 12 q0 8 -8 10 l12 18 h-10 l-10 -16 h-6 V80 Z" fill="#ffffff"/>
-    <path d="M66 80 V40 h24 v8 h-16 v8 h14 v8 h-14 v16 h-8 Z" fill="#ffffff"/>
-  </g>
-  <title>TJ Dev Club</title>
-</svg>`
   await fs.writeFile(path.join(SITE_DIR, 'assets', 'site.css'), siteCss)
-  await fs.writeFile(path.join(SITE_DIR, 'assets', 'logo.svg'), logoSvg)
 
   // Generate an index.html with branding
   const indexHtml = `<!doctype html>
@@ -279,14 +262,12 @@ footer{border-top:1px solid var(--border);margin-top:24px;padding-top:12px;color
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TJ Dev Club Lectures</title>
     <link rel="stylesheet" href="./assets/site.css">
-    <link rel="icon" type="image/svg+xml" href="./assets/logo.svg">
   </head>
   <body>
     <div class="top-accent"></div>
     <div class="container">
       <header class="header">
         <a class="brand" href="./">
-          <img src="./assets/logo.svg" alt="TJ Dev Club logo">
           <div>
             <div class="title">TJ Dev Club Lectures</div>
             <div class="subtitle">Interactive decks and downloadable PDFs</div>
