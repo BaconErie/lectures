@@ -1,9 +1,9 @@
 ---
 theme: ./../
+title: Advanced HTML
 ---
 
-# \<h1\>i ♥️ html\</h1\>
-
+# \<html\> (adv.)
 TJ Dev Club
 
 ---

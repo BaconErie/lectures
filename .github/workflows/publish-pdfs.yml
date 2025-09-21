@@ -44,13 +44,17 @@ jobs:
         run: |
           node scripts/export-pdfs.mjs
 
+      - name: Add CNAME for custom domain
+        run: |
+          echo 'lectures.tjdev.club' > dist-site/CNAME
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist-pdf
+          path: dist-site
 
       - name: Deploy to GitHub Pages
         id: deployment

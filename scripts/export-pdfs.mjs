@@ -11,7 +11,9 @@ const __dirname = path.dirname(__filename)
 
 const REPO_ROOT = path.resolve(__dirname, '..')
 const LECTURES_DIR = path.join(REPO_ROOT, 'lectures')
-const OUTPUT_DIR = path.join(REPO_ROOT, 'dist-pdf')
+const SITE_DIR = path.join(REPO_ROOT, 'dist-site')
+const PDF_DIR = path.join(SITE_DIR, 'pdfs')
+const DECKS_DIR = path.join(SITE_DIR, 'decks')
 
 function slugify(basename) {
   return basename
@@ -109,6 +111,11 @@ async function exportPdf(entryPath, outPath) {
   await run('npx', args)
 }
 
+async function buildSpa(entryPath, outDir) {
+  const args = ['-y', 'slidev', 'build', entryPath, '--out', outDir, '--base', './']
+  await run('npx', args)
+}
+
 async function gitLastModifiedIso(filePath) {
   try {
     const { stdout } = await run('git', ['log', '-1', '--format=%cI', '--', filePath])
@@ -128,7 +135,8 @@ async function gitLastCommitSha(filePath) {
 }
 
 async function main() {
-  await fs.mkdir(OUTPUT_DIR, { recursive: true })
+  await fs.mkdir(PDF_DIR, { recursive: true })
+  await fs.mkdir(DECKS_DIR, { recursive: true })
 
   let entries = []
   try {
@@ -155,7 +163,7 @@ async function main() {
     const basename = path.basename(filename, path.extname(filename))
     const id = slugify(basename)
     const pdfFilename = `${id}.pdf`
-    const pdfPath = path.join(OUTPUT_DIR, pdfFilename)
+    const pdfPath = path.join(PDF_DIR, pdfFilename)
 
     const content = await fs.readFile(absoluteSource, 'utf8')
     const { data: fm, body } = await extractFrontmatter(content, grayMatter)
@@ -169,8 +177,12 @@ async function main() {
         ? fm.tags.split(',').map(s => s.trim()).filter(Boolean)
         : []
 
-    console.log(`Exporting ${sourcePath} -> ${path.relative(REPO_ROOT, pdfPath)}`)
+    console.log(`Exporting PDF ${sourcePath} -> ${path.relative(REPO_ROOT, pdfPath)}`)
     await exportPdf(absoluteSource, pdfPath)
+
+    const deckOutDir = path.join(DECKS_DIR, id)
+    console.log(`Building SPA  ${sourcePath} -> ${path.relative(REPO_ROOT, deckOutDir)}`)
+    await buildSpa(absoluteSource, deckOutDir)
     const stat = await fs.stat(pdfPath)
     const lastModified = (await gitLastModifiedIso(sourcePath)) || new Date(stat.mtimeMs).toISOString()
     const lastSha = await gitLastCommitSha(sourcePath)
@@ -180,7 +192,8 @@ async function main() {
       title,
       description,
       source: sourcePath,
-      pdf: pdfFilename,
+      pdf: `pdfs/${pdfFilename}`,
+      spa: `decks/${id}/`,
       pdfSizeBytes: stat.size,
       slideCount,
       lastModified,
@@ -201,19 +214,58 @@ async function main() {
     items: registryItems
   }
 
-  await fs.writeFile(path.join(OUTPUT_DIR, 'registry.json'), JSON.stringify(registry, null, 2) + '\n')
+  await fs.writeFile(path.join(SITE_DIR, 'registry.json'), JSON.stringify(registry, null, 2) + '\n')
 
   // Also generate a simple README
   const lines = [
-    '# Lecture PDFs',
+    '# Lectures',
     '',
-    'This branch contains exported PDFs and a `registry.json` with metadata.',
+    'This site contains interactive decks and downloadable PDFs with a `registry.json` of metadata.',
     '',
-    ...registryItems.map(i => `- ${i.title} (${i.slideCount} slides) — [PDF](./${i.pdf})`)
+    ...registryItems.map(i => `- ${i.title} (${i.slideCount} slides) — [Deck](./${i.spa}) | [PDF](./${i.pdf})`)
   ]
-  await fs.writeFile(path.join(OUTPUT_DIR, 'README.md'), lines.join('\n') + '\n')
+  await fs.writeFile(path.join(SITE_DIR, 'README.md'), lines.join('\n') + '\n')
 
-  console.log(`\nWrote registry for ${registryItems.length} item(s) to dist-pdf/registry.json`)
+  // Generate a minimal index.html for browsing decks and PDFs
+  const indexHtml = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lectures</title>
+    <style>
+      body{font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;line-height:1.5;padding:24px;max-width:900px;margin:0 auto;color:#1f2937}
+      h1{font-size:28px;margin:0 0 12px}
+      .muted{color:#6b7280;margin:0 0 24px}
+      ul{list-style:none;padding:0;margin:0}
+      li{padding:12px 0;border-bottom:1px solid #e5e7eb}
+      a{color:#2563eb;text-decoration:none}
+      a:hover{text-decoration:underline}
+      .meta{color:#6b7280;font-size:12px}
+      .actions{margin-top:6px}
+      .actions a{margin-right:12px}
+    </style>
+  </head>
+  <body>
+    <h1>Lectures</h1>
+    <p class="muted">Interactive decks (SPA) and downloadable PDFs.</p>
+    <ul>
+      ${registryItems.map(i => `
+      <li>
+        <div><strong>${i.title.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</strong></div>
+        ${i.description ? `<div class="meta">${String(i.description).replace(/&/g,'&amp;').replace(/</g,'&lt;')}</div>` : ''}
+        <div class="meta">${i.slideCount} slides${i.meta?.authors ? ` • ${Array.isArray(i.meta.authors) ? i.meta.authors.join(', ') : i.meta.authors}` : ''}${i.lastModified ? ` • updated ${new Date(i.lastModified).toLocaleDateString()}` : ''}</div>
+        <div class="actions">
+          <a href="./${i.spa}" rel="noopener">Open Deck</a>
+          <a href="./${i.pdf}" rel="noopener">Download PDF</a>
+        </div>
+      </li>`).join('')}
+    </ul>
+  </body>
+  </html>`
+  await fs.writeFile(path.join(SITE_DIR, 'index.html'), indexHtml)
+
+  console.log(`\nWrote registry for ${registryItems.length} item(s) to dist-site/registry.json`)
 }
 
 main().catch(err => {
