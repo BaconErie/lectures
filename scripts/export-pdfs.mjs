@@ -111,8 +111,11 @@ async function exportPdf(entryPath, outPath) {
   await run('npx', args)
 }
 
-async function buildSpa(entryPath, outDir) {
-  const args = ['-y', 'slidev', 'build', entryPath, '--out', outDir, '--base', './']
+async function buildSpa(entryPath, outDir, basePath) {
+  const args = ['-y', 'slidev', 'build', entryPath, '--out', outDir]
+  if (basePath) {
+    args.push('--base', basePath)
+  }
   await run('npx', args)
 }
 
@@ -181,8 +184,9 @@ async function main() {
     await exportPdf(absoluteSource, pdfPath)
 
     const deckOutDir = path.join(DECKS_DIR, id)
-    console.log(`Building SPA  ${sourcePath} -> ${path.relative(REPO_ROOT, deckOutDir)}`)
-    await buildSpa(absoluteSource, deckOutDir)
+    const basePath = `/decks/${id}/`
+    console.log(`Building SPA  ${sourcePath} -> ${path.relative(REPO_ROOT, deckOutDir)} (base ${basePath})`)
+    await buildSpa(absoluteSource, deckOutDir, basePath)
     const stat = await fs.stat(pdfPath)
     const lastModified = (await gitLastModifiedIso(sourcePath)) || new Date(stat.mtimeMs).toISOString()
     const lastSha = await gitLastCommitSha(sourcePath)
@@ -226,41 +230,93 @@ async function main() {
   ]
   await fs.writeFile(path.join(SITE_DIR, 'README.md'), lines.join('\n') + '\n')
 
-  // Generate a minimal index.html for browsing decks and PDFs
+  // Write brand assets (CSS + logo) inspired by tjdev.club
+  await fs.mkdir(path.join(SITE_DIR, 'assets'), { recursive: true })
+  const siteCss = `:root{--bg:#ffffff;--text:#0f172a;--muted:#64748b;--border:#e5e7eb;--primary:#0ea5e9;--primary-600:#0284c7;--card:#f8fafc}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;line-height:1.6}
+.top-accent{height:4px;background:linear-gradient(90deg,var(--primary),var(--primary-600))}
+.container{max-width:1040px;margin:0 auto;padding:24px}
+.header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+.brand img{width:36px;height:36px}
+.brand .title{font-weight:700;font-size:18px}
+.brand .subtitle{font-size:12px;color:var(--muted)}
+.nav a{color:var(--muted);text-decoration:none;margin-left:16px}
+.nav a:hover{color:var(--primary)}
+.intro{margin:6px 0 18px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px}
+.card h3{margin:0 0 6px;font-size:16px}
+.meta{color:var(--muted);font-size:12px;margin:0 0 8px}
+.actions a{display:inline-block;margin-right:12px;color:var(--primary);text-decoration:none}
+.actions a:hover{text-decoration:underline}
+footer{border-top:1px solid var(--border);margin-top:24px;padding-top:12px;color:var(--muted);font-size:12px}`
+  const logoSvg = `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" rx="20" fill="url(#g)"/>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0ea5e9"/>
+      <stop offset="1" stop-color="#0284c7"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <path d="M30 80 V40 h14 q12 0 12 12 q0 8 -8 10 l12 18 h-10 l-10 -16 h-6 V80 Z" fill="#ffffff"/>
+    <path d="M66 80 V40 h24 v8 h-16 v8 h14 v8 h-14 v16 h-8 Z" fill="#ffffff"/>
+  </g>
+  <title>TJ Dev Club</title>
+</svg>`
+  await fs.writeFile(path.join(SITE_DIR, 'assets', 'site.css'), siteCss)
+  await fs.writeFile(path.join(SITE_DIR, 'assets', 'logo.svg'), logoSvg)
+
+  // Generate an index.html with branding
   const indexHtml = `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Lectures</title>
-    <style>
-      body{font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;line-height:1.5;padding:24px;max-width:900px;margin:0 auto;color:#1f2937}
-      h1{font-size:28px;margin:0 0 12px}
-      .muted{color:#6b7280;margin:0 0 24px}
-      ul{list-style:none;padding:0;margin:0}
-      li{padding:12px 0;border-bottom:1px solid #e5e7eb}
-      a{color:#2563eb;text-decoration:none}
-      a:hover{text-decoration:underline}
-      .meta{color:#6b7280;font-size:12px}
-      .actions{margin-top:6px}
-      .actions a{margin-right:12px}
-    </style>
+    <title>TJ Dev Club Lectures</title>
+    <link rel="stylesheet" href="./assets/site.css">
+    <link rel="icon" type="image/svg+xml" href="./assets/logo.svg">
   </head>
   <body>
-    <h1>Lectures</h1>
-    <p class="muted">Interactive decks (SPA) and downloadable PDFs.</p>
-    <ul>
-      ${registryItems.map(i => `
-      <li>
-        <div><strong>${i.title.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</strong></div>
-        ${i.description ? `<div class="meta">${String(i.description).replace(/&/g,'&amp;').replace(/</g,'&lt;')}</div>` : ''}
-        <div class="meta">${i.slideCount} slides${i.meta?.authors ? ` • ${Array.isArray(i.meta.authors) ? i.meta.authors.join(', ') : i.meta.authors}` : ''}${i.lastModified ? ` • updated ${new Date(i.lastModified).toLocaleDateString()}` : ''}</div>
-        <div class="actions">
-          <a href="./${i.spa}" rel="noopener">Open Deck</a>
-          <a href="./${i.pdf}" rel="noopener">Download PDF</a>
-        </div>
-      </li>`).join('')}
-    </ul>
+    <div class="top-accent"></div>
+    <div class="container">
+      <header class="header">
+        <a class="brand" href="./">
+          <img src="./assets/logo.svg" alt="TJ Dev Club logo">
+          <div>
+            <div class="title">TJ Dev Club Lectures</div>
+            <div class="subtitle">Interactive decks and downloadable PDFs</div>
+          </div>
+        </a>
+        <nav class="nav">
+          <a href="./registry.json">Registry</a>
+          <a href="https://tjdev.club" target="_blank" rel="noopener">tjdev.club</a>
+        </nav>
+      </header>
+
+      <p class="intro">Browse the latest lectures. Each entry links to the interactive deck and a PDF export.</p>
+
+      <section class="grid">
+        ${registryItems.map(i => `
+        <article class="card">
+          <h3>${i.title.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</h3>
+          ${i.description ? `<p class=\"meta\">${String(i.description).replace(/&/g,'&amp;').replace(/</g,'&lt;')}</p>` : ''}
+          <p class="meta">${i.slideCount} slides${i.meta?.authors ? ` • ${Array.isArray(i.meta.authors) ? i.meta.authors.join(', ') : i.meta.authors}` : ''}${i.lastModified ? ` • updated ${new Date(i.lastModified).toLocaleDateString()}` : ''}</p>
+          <div class="actions">
+            <a href="./${i.spa}">Open Deck</a>
+            <a href="./${i.pdf}">Download PDF</a>
+          </div>
+        </article>`).join('')}
+      </section>
+
+      <footer>
+        © ${new Date().getFullYear()} TJ Dev Club
+      </footer>
+    </div>
   </body>
   </html>`
   await fs.writeFile(path.join(SITE_DIR, 'index.html'), indexHtml)
