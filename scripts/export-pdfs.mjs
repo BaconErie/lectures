@@ -95,8 +95,8 @@ function run(cmd, args, options = {}) {
     const child = spawn(cmd, args, { cwd: REPO_ROOT, stdio: ['ignore', 'pipe', 'pipe'], ...options })
     let stdout = ''
     let stderr = ''
-    child.stdout.on('data', d => (stdout += d.toString()))
-    child.stderr.on('data', d => (stderr += d.toString()))
+    if (child.stdout) child.stdout.on('data', d => (stdout += d.toString()))
+    if (child.stderr) child.stderr.on('data', d => (stderr += d.toString()))
     child.on('close', code => {
       if (code === 0) resolve({ stdout, stderr })
       else reject(new Error(`${cmd} ${args.join(' ')} failed with code ${code}\n${stderr}`))
@@ -105,9 +105,8 @@ function run(cmd, args, options = {}) {
 }
 
 async function exportPdf(entryPath, outPath) {
-  // Use slidev export with chromium bundled to avoid prompts
-  const args = ['-y', 'slidev', 'export', entryPath, '--output', outPath, '--with-chromium']
-  await run('npx', args, { stdio: 'inherit' })
+  const args = ['-y', 'slidev', 'export', entryPath, '--output', outPath]
+  await run('npx', args)
 }
 
 async function gitLastModifiedIso(filePath) {
