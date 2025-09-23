@@ -22,6 +22,7 @@ body,
   font-family: var(--slidev-font-family);
   background-color: #0a0c10;
   font-weight: 400;
+  font-size: 18px; /* slightly larger base font size for the theme */
 }
 
 .slidev-layout.cover,
@@ -33,6 +34,11 @@ body,
   table + h2 {
     @apply mt-10;
   }
+}
+
+/* Default paragraph typography */
+.slidev-layout p {
+  line-height: 1.8; /* comfortable paragraph line spacing */
 }
 
 /* intro is the main content */
@@ -220,4 +226,14 @@ body,
 .slidev-monaco-container .slidev-runner-output {
   max-height: var(--monaco-execution-height);
   overflow: auto;
+}
+
+/* Ensure images scale to fit within the slide area */
+.slidev-layout img {
+  max-width: 100%;
+  height: auto;
+  max-height: 70vh; /* prevent vertical overflow while leaving room for headings */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

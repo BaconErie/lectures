@@ -1,10 +1,18 @@
 ---
 theme: ./../
+hideInToc: true
 ---
 
 # \<h1\>i ♥️ html\</h1\>
 
 TJ Dev Club
+
+---
+hideInToc: true
+---
+
+# Table of Contents
+<Toc />
 
 ---
 
