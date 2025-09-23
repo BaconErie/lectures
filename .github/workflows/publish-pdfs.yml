@@ -46,7 +46,7 @@ jobs:
 
       - name: Add CNAME for custom domain
         run: |
-          echo 'lectures.tjdev.club' > dist-site/CNAME
+          echo 'lectures.baconerie.com' > dist-site/CNAME
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
