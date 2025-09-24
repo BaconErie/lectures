@@ -136,29 +136,114 @@ TODO
 layout: center
 ```
 
-# SEO
+# SEO and Getting Clicks
 
 ---
 
 # Search Engine Optimization (SEO)
 
-Top links on Google results are clicked on first
+How do we get people to visit our site?
 
-How do we get our website to show up first?
+How do we get first on Google?
 
-This is SEO
-
----
-
-# What search engines look for
-
-TODO
+We will focus on basic meta tags for SEO and social media previews today.
 
 ---
 
-# What tags can help
+# Basic SEO Tags
 
-TODO
+Really used by Search Engines
+
+Result snippets, or keywords
+
+```html
+<!-- Title is really basic, but super important -->
+<title>Your Page Title</title>
+
+<meta
+  name="description"
+  content="Thomas Jefferson High School for Science and Technology Developer Club
+   - Learn programming, build projects, and connect with fellow developers."
+/>
+<meta
+  name="keywords"
+  content="TJHSST Dev Club, Thomas Jefferson, programming, coding, development,
+   computer science, web development, software engineering"
+/>
+<meta name="author" content="TJHSST Dev Club" />
+```
+
+---
+
+# Open Graph (OG)
+
+Used by social media sites (e.g. Discord, Facebook) to generate rich previews
+
+<img src="/advanced-open-graph.png" alt="OG Example" style="width: auto; height:300px;"/>
+
+---
+
+# Open Graph (OG) tags
+
+4 required
+
+```html
+<meta property="og:title" content="Your Page Title" />
+
+<!-- website, music, video, article, book. see https://ogp.me/#types -->
+<meta property="og:type" content="website" />
+
+<!-- Image people see. Must be absolute URL, hosted on either your server or a CDN -->
+<meta property="og:image" content="https://example.com/image.jpg" />
+
+<!-- Permanent URL of your page; probably don't include URL params, for example -->
+<meta property="og:url" content="https://example.com/page" />
+```
+
+---
+
+# TJ Dev Club OG example
+
+Description is optional but recommended
+
+```html
+<meta property="og:title" content="TJHSST Dev Club" />
+<meta
+  property="og:description"
+  content="Thomas Jefferson High School for Science and Technology Developer Club."
+/>
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://tjdev.club/" />
+<meta property="og:site_name" content="TJHSST Dev Club" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:image" content="https://tjdev.club/og-image.png" />
+<meta
+  property="og:image:secure_url"
+  content="https://tjdev.club/og-image.png"
+/>
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:alt" content="TJHSST Dev Club logo" />
+```
+
+---
+
+# Twitter Cards
+
+Basically OpenGraph, but for Twitter instead of Facebook
+
+```html
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="TJHSST Dev Club" />
+<meta
+  name="twitter:description"
+  content="Thomas Jefferson High School for Science and Technology Developer Club
+   -- Learn programming, build projects, and connect with fellow developers."
+/>
+<meta name="twitter:image" content="https://tjdev.club/og-image.png" />
+```
+
+Add as much info as you can to your websites to improve SEO and link previews
 
 ---
 
