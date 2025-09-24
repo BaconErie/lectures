@@ -220,6 +220,58 @@ body,
   height: 100% !important;
 }
 
+/* Opt-in: make a single Monaco editor vertically resizable */
+.slidev-monaco-container-inner.monaco-resizable {
+  resize: vertical;
+  overflow: auto;
+  min-height: 120px;
+  max-height: 80vh;
+}
+
+/* Ensure Monaco fills the resized height */
+.slidev-monaco-container-inner.monaco-resizable .monaco-editor,
+.slidev-monaco-container-inner.monaco-resizable .monaco-editor .overflow-guard {
+  height: 100% !important;
+}
+
+/* Generic container variant (non-Slidev) */
+.monaco-editor-wrapper.monaco-resizable {
+  resize: vertical;
+  overflow: auto;
+  min-height: 120px;
+  max-height: 80vh;
+}
+
+.monaco-editor-wrapper.monaco-resizable .monaco-editor,
+.monaco-editor-wrapper.monaco-resizable .monaco-editor .overflow-guard {
+  height: 100% !important;
+}
+
+/* Opt-in via ancestor wrapper for Markdown-friendly usage */
+.monaco-resizable .slidev-monaco-container-inner {
+  resize: vertical;
+  overflow: auto;
+  min-height: 120px;
+  max-height: 80vh;
+}
+
+.monaco-resizable .slidev-monaco-container-inner .monaco-editor,
+.monaco-resizable .slidev-monaco-container-inner .monaco-editor .overflow-guard {
+  height: 100% !important;
+}
+
+.monaco-resizable .monaco-editor-wrapper {
+  resize: vertical;
+  overflow: auto;
+  min-height: 120px;
+  max-height: 80vh;
+}
+
+.monaco-resizable .monaco-editor-wrapper .monaco-editor,
+.monaco-resizable .monaco-editor-wrapper .monaco-editor .overflow-guard {
+  height: 100% !important;
+}
+
 /* Do not force overflow on Monaco internals */
 
 /* Runner (executor) area: fixed height and scrolling */
