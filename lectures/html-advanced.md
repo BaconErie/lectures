@@ -124,6 +124,71 @@ in your notes
 
 ---
 
+# \<link\>
+
+- Used to link external resources (e.g., CSS files) or favicons
+- Placed in the `<head>` section
+
+```html
+<head>
+  <!-- External CSS file -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" />
+</head>
+```
+
+---
+
+# \<details\> and \<summary\>
+
+Dropdowns
+
+```html {monaco-run}
+<details>
+  <!-- Summary is what you click on -->
+  <summary>Pigeon information</summary>
+
+  <!-- Content that is only shown when you click on the summary -->
+  <p>
+    Pigeons are contentious aircraft. Some people believe they are spies for the
+    government. Others believe they are animals.
+  </p>
+</details>
+```
+
+---
+
+# \<details\> and \<summary\>
+
+Open attribute lets it be open initially
+
+```html {monaco-run}
+<details open>
+  <!-- Summary is what you click on -->
+  <summary>Pigeon information</summary>
+
+  <!-- Content that is only shown when you click on the summary -->
+  <p>
+    Pigeons are contentious aircraft. Some people believe they are spies for the
+    government. Others believe they are animals.
+  </p>
+</details>
+```
+
+---
+
+# \<abbr\>
+
+Use for abbreviations. Helps with accessibility and screen readers
+
+```html {monaco-run}
+The report was published by <abbr title="National Public Radio">NPR</abbr>.
+```
+
+---
+
 # \<meta\>
 
 Various uses:
