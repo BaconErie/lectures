@@ -24,8 +24,8 @@ TJ Dev Club
 - Markup language, little logic, little styling
   - NOT A PROGRAMMING LANGUAGE!!!!
 - Forms the structure of the website
-- \<tags\> and stuff
-<br><br>
+- \<tags\> and stuff <br><br>
+
 ```html
 <!doctype html>
 <html>
@@ -72,19 +72,27 @@ layout: default
 ```html {monaco-run}
 <!doctype html>
 <html>
-    <head>
-        <title>WELCOME TO DEV CLUB BLOG</title>
-    </head>
-    <body>
-        <h1>Dev Club Blog</h1>
-        <p> a developers dream! </p>
-        <br>
-        <h2>why i hate pigeons</h2>
-        <h4>by dev club officers</h4>
-        <br>
-        <p>i hate pigeonins because they are <strong>EVIL!!!!</strong>. i mean <em>really</em> think about it, why wouldn't the <a href="https://cia.gov">CIA</a> use pigeons as spying devices. it's honestly super crazy that people think pigeons are real. look at this leaked image
-        <img src="https://preview.redd.it/row4ll2734v21.jpg?width=640&crop=smart&auto=webp&s=9175ddb3be60ac4b0de319d6f2aabd3ced84a78d">
-    </body>
+  <head>
+    <title>WELCOME TO DEV CLUB BLOG</title>
+  </head>
+  <body>
+    <h1>Dev Club Blog</h1>
+    <p>a developers dream!</p>
+    <br />
+    <h2>why i hate pigeons</h2>
+    <h4>by dev club officers</h4>
+    <br />
+    <p>
+      i hate pigeonins because they are <strong>EVIL!!!!</strong>. i mean
+      <em>really</em> think about it, why wouldn't the
+      <a href="https://cia.gov">CIA</a> use pigeons as spying devices. it's
+      honestly super crazy that people think pigeons are real. look at this
+      leaked image
+      <img
+        src="https://preview.redd.it/row4ll2734v21.jpg?width=640&crop=smart&auto=webp&s=9175ddb3be60ac4b0de319d6f2aabd3ced84a78d"
+      />
+    </p>
+  </body>
 </html>
 ```
 
@@ -92,7 +100,8 @@ layout: default
 
 # \<div\>
 
-Basic general use element for **blocks** (not inline!). Wrapping, making a box, menus, whatever needs to be a block.
+Basic general use element for **blocks** (not inline!). Wrapping, making a box,
+menus, whatever needs to be a block.
 
 ```html {monaco-run}
 Blah blah blah blah
@@ -104,7 +113,8 @@ blah blah blah blah.
 
 # \<span\>
 
-General use inline element, doesn't make any changes to the element but can be used to apply classes, animations, or anything else you want.
+General use inline element, doesn't make any changes to the element but can be
+used to apply classes, animations, or anything else you want.
 
 ```html {monaco-run}
 Only highlight what is
@@ -134,15 +144,17 @@ Various uses:
 # \<meta name="viewport"\>
 
 - Mobile devices tend to act weird (thanks iOS 28)
-- Usually mobile devices pretend that their screen is really big, then zoom everything out so the entire page can be seen
-- Why? Many (old) sites don't optimize for mobile, so they only look good on large
-screens.
+- Usually mobile devices pretend that their screen is really big, then zoom
+  everything out so the entire page can be seen
+- Why? Many (old) sites don't optimize for mobile, so they only look good on
+  large screens.
 
 ---
 
 # \<meta name="viewport"\>
 
-On a mobile device, because everything is so small, the user must manually zoom in (very bad UX!). Can you even read anything on this page?
+On a mobile device, because everything is so small, the user must manually zoom
+in (very bad UX!). Can you even read anything on this page?
 
 <img src="/zoomedout.png" alt="zoomedout" style="width: auto; height:300px;"/>
 
@@ -150,7 +162,8 @@ On a mobile device, because everything is so small, the user must manually zoom 
 
 # \<meta name="viewport"\>
 
-This is what we want. By including `<meta name="viewport">`, mobile devices don't automatically zoom out and our website looks a *lot* nicer.
+This is what we want. By including `<meta name="viewport">`, mobile devices
+don't automatically zoom out and our website looks a _lot_ nicer.
 
 <img src="/advanced-normal.png" alt="Normal" style="width: auto; height:300px;"/>
 
@@ -162,14 +175,16 @@ Now that I know about `<meta name="viewport">`, how can I use it?
 
 ```html
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- no end tag -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- no end tag -->
   <!-- other metadata and stuff -->
 </head>
 ```
 
 Set `width` to `device-width`. `width` means VIRTUAL VIEWPORT width
 
-Set `initial-scale` to `1.0`. `scale` means ZOOM level, 1.0 means no zoom in or out
+Set `initial-scale` to `1.0`. `scale` means ZOOM level, 1.0 means no zoom in or
+out
 
 ---
 
@@ -220,7 +235,9 @@ These tags should be in every HTML site you create!
 ---
 
 # Example SEO Head
+
 The title on your website is **VERY IMPORTANT**!!!
+
 ```html{4}
 <head>
   <meta charset="utf-8">
@@ -244,7 +261,8 @@ The title on your website is **VERY IMPORTANT**!!!
 
 # Example SEO Head
 
-`<meta name="description">` and `<meta name="keywords">` describe your site, so putting useful keywords in here is **very important**.
+`<meta name="description">` and `<meta name="keywords">` describe your site, so
+putting useful keywords in here is **very important**.
 
 ```html{5-11}
 <head>
@@ -255,8 +273,7 @@ The title on your website is **VERY IMPORTANT**!!!
   <!-- this is used for search engine keywords, so definitely do this!!! (comma separated) -->
   <meta
     name="keywords"
-    content="TJHSST Dev Club, Thomas Jefferson, programming, coding, development,
-     computer science, web development, software engineering"
+    content="hiking, northern virginia, trails, maps, travel"
   />
 
   <meta property="og:title" content="Best Hiking Trails in Northern Virginia">
@@ -270,7 +287,8 @@ The title on your website is **VERY IMPORTANT**!!!
 
 # Example SEO Head
 
-OpenGraph (og) is primarily used to control the appearance of your content on messaging and social media platforms (typically embeds). Having a descriptive image drives traffic to your site!
+OpenGraph (og): control the embeds on messaging and social media platforms.
+Descriptive image ==> More clicks
 
 ```html{12-19}
 <head>
@@ -280,8 +298,7 @@ OpenGraph (og) is primarily used to control the appearance of your content on me
   <meta name="description" content="Discover top hiking trails in NoVA with maps.">
   <meta
     name="keywords"
-    content="TJHSST Dev Club, Thomas Jefferson, programming, coding, development,
-     computer science, web development, software engineering"
+    content="hiking, northern virginia, trails, maps, travel"
   />
 
   <meta property="og:title" content="Best Hiking Trails in Northern Virginia">
@@ -300,7 +317,7 @@ OpenGraph (og) is primarily used to control the appearance of your content on me
 layout: center
 ```
 
-<img src="/no-seo.png" />
+No Open Graph tags, super boring. <img src="/no-seo.png" />
 
 ---
 
@@ -308,9 +325,7 @@ layout: center
 layout: center
 ```
 
-
-<img src="/with-seo.png">
-
+OG tags gives us a nice preview! <img src="/with-seo.png">
 
 ---
 
@@ -318,12 +333,12 @@ layout: center
 layout: center
 ```
 
-
-<img src="/dc-seo.png">
+name="description" controls the small text snippet <img src="/dc-seo.png">
 
 ---
 
 # Components
+
 - New concept that allow us to go beyond plain HTML
 - Extensive use in JS libraries
   - Not just limited to JS (e.g., Python w/ Jinja)
@@ -333,7 +348,8 @@ layout: center
 
 # Components Example
 
-Repeating ourselves a lot, and gets annoying to type all of these, cluttered websites
+Repeating ourselves a lot, and gets annoying to type all of these, cluttered
+websites
 
 ```html {monaco-run}
 <div style="border: solid">
@@ -389,7 +405,8 @@ END DEFINITION
 - Nobody wants to look at my site
 - Optimize the site for mobile (viewport meta), and SEO (meta tags)
 
-[Shell Code](https://drive.google.com/file/d/1tP-TSFGRk7qWJ_xpaivt2w9Z89lMF0k_/view?usp=sharing) -> https://tinyurl.com/tjdevclub-shell-12
+[Shell Code](https://drive.google.com/file/d/1tP-TSFGRk7qWJ_xpaivt2w9Z89lMF0k_/view?usp=sharing)
+-> https://tinyurl.com/tjdevclub-shell-12
 
 ---
 
