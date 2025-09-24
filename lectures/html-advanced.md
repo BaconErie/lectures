@@ -9,7 +9,17 @@ TJ Dev Club
 
 ---
 
-# Quick HTML Refresher
+# Table of Contents
+
+1. Quick Basic HTML Refresher
+2. Advanced Tags
+3. SEO and Getting Clicks
+4. Thinking about components
+5. Mini Project
+
+---
+
+# Quick Basic HTML Refresher
 
 - Markup language, little logic, little styling
 - Forms the structure of the website
