@@ -17,7 +17,7 @@ TJ Dev Club
 
 ---
 
-# Most important tags review: `\<div\>`
+# `\<div\>`
 
 Basic general use element for **blocks**, not inline
 
@@ -31,7 +31,7 @@ blah blah blah blah.
 
 ---
 
-# Most important tags review: `\<span\>`
+# `\<span\>`
 
 General use but inline.
 
@@ -45,7 +45,11 @@ in your notes
 
 ---
 
-# Review: basic text
+```yaml
+class: monaco-resizable
+```
+
+# Basic text
 
 ```html {monaco-run}
 <h1>Heading 1</h1>
@@ -227,6 +231,16 @@ END DEFINITION
 <Task text="Finish HW" labels="most important, school" />
 <Task text="Work on website" labels="coding" />
 ```
+
+---
+
+# Mini-project
+
+- Setup a Director site (static) w/ an officer
+- Nobody wants to look at my site
+- Optimize the site for mobile (viewport meta), and SEO (meta tags)
+
+[Shell code](https://drive.google.com/file/d/1tP-TSFGRk7qWJ_xpaivt2w9Z89lMF0k_/view?usp=sharing)
 
 ---
 
