@@ -12,35 +12,20 @@ TJ Dev Club
 # Quick HTML Refresher
 
 - Markup language, little logic, little styling
+  - NOT A PROGRAMMING LANGUAGE!!!!
 - Forms the structure of the website
 - \<tags\> and stuff
-
----
-
-# `\<div\>`
-
-Basic general use element for **blocks**, not inline
-
-Wrapping, making a box, menus, whatever needs to be a block.
-
-```html {monaco-run}
-Blah blah blah blah
-<div style="border: solid">Box. Not inline.</div>
-blah blah blah blah.
-```
-
----
-
-# `\<span\>`
-
-General use but inline.
-
-Not as commonly used, but helpful.
-
-```html {monaco-run}
-Only highlight what is
-<span style="border: solid">most important</span>
-in your notes
+<br><br>
+```html
+<!doctype html>
+<html>
+  <head>
+    <!-- metadata (e.g., title, seo stuff) -->
+  </head>
+  <body>
+    <!-- actual content of page (e.g., text, headers, images, you name it!) -->
+  </body>
+</html>
 ```
 
 ---
@@ -51,6 +36,10 @@ class: monaco-resizable
 
 # Basic text
 
+- Headers (increase in number, decrease in size): `<h[num]>`
+- Paragraphs: `<p>`
+- Bold and italic: `<strong>` and `<em>`
+
 ```html {monaco-run}
 <h1>Heading 1</h1>
 <h2>Heading 2</h2>
@@ -58,107 +47,205 @@ class: monaco-resizable
 <h4>Heading 4</h4>
 <h5>Heading 5</h5>
 <h6>Heading 6</h6>
-<p>This is a paragraph</p>
+<p>This <strong>is</strong> <em>a</em> paragraph</p>
 <p>Auto line breaks after paragraph</p>
 ```
 
 ---
 
 ```yaml
-layout: center
+layout: default
 ```
 
-# Some more advanced tags
+# Example HTML Page
+
+```html {monaco-run}
+<!doctype html>
+<html>
+    <head>
+        <title>WELCOME TO DEV CLUB BLOG</title>
+    </head>
+    <body>
+        <h1>Dev Club Blog</h1>
+        <p> a developers dream! </p>
+        <br>
+        <h2>why i hate pigeons</h2>
+        <h4>by dev club officers</h4>
+        <br>
+        <p>i hate pigeonins because they are <strong>EVIL!!!!</strong>. i mean <em>really</em> think about it, why wouldn't the <a href="https://cia.gov">CIA</a> use pigeons as spying devices. it's honestly super crazy that people think pigeons are real. look at this leaked image
+        <img src="https://preview.redd.it/row4ll2734v21.jpg?width=640&crop=smart&auto=webp&s=9175ddb3be60ac4b0de319d6f2aabd3ced84a78d">
+    </body>
+</html>
+```
 
 ---
 
-# `<meta>`
+# \<div\>
+
+Basic general use element for **blocks** (not inline!). Wrapping, making a box, menus, whatever needs to be a block.
+
+```html {monaco-run}
+Blah blah blah blah
+<div style="border: solid">Box. Not inline.</div>
+blah blah blah blah.
+```
+
+---
+
+# \<span\>
+
+General use inline element, doesn't make any changes to the element but can be used to apply classes, animations, or anything else you want.
+
+```html {monaco-run}
+Only highlight what is
+<span style="border: solid">most important</span>
+in your notes
+```
+
+---
+
+# \<meta\>
 
 Various uses:
 
-- Metadata
+- **Meta**data
 - Instructions for browser
-- SEO
+- Search Engine Optimization (SEO)
 - HTTP header simulation
+
+<br>
+```html
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+```
 
 ---
 
-# Viewport meta
+# \<meta name="viewport"\>
 
-Mobile devices act weird
-
-Pretend their screen is really big, then zoom everything out so the entire page
-can be see
-
-Why? Many (old) sites don't optimize for mobile, so they only look good on large
+- Mobile devices tend to act weird (thanks iOS 28)
+- Usually mobile devices pretend that their screen is really big, then zoom everything out so the entire page can be seen
+- Why? Many (old) sites don't optimize for mobile, so they only look good on large
 screens.
 
 ---
 
-# Viewport meta
+# \<meta name="viewport"\>
 
-Simulated mobile view. Everything is too small, user must manually zoom in.
+On a mobile device, because everything is so small, the user must manually zoom in (very bad UX!). Can you even read anything on this page?
 
 <img src="/zoomedout.png" alt="zoomedout" style="width: auto; height:300px;"/>
 
 ---
 
-# Viewport meta
+# \<meta name="viewport"\>
 
-What we want. We tell the phone not to automatically zoom out.
+This is what we want. By including `<meta name="viewport">`, mobile devices don't automatically zoom out and our website looks a *lot* nicer.
 
 <img src="/advanced-normal.png" alt="Normal" style="width: auto; height:300px;"/>
 
 ---
 
-# Viewport meta
+# \<meta name="viewport"\>
+
+Now that I know about `<meta name="viewport">`, how can I use it?
 
 ```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- no end tag -->
+  <!-- other metadata and stuff -->
+</head>
 ```
 
 Set `width` to `device-width`. `width` means VIRTUAL VIEWPORT width
 
-Set `initial-scale` to `1.0`. `scale` means ZOOM level, 1.0 means no zoom in or
-out
+Set `initial-scale` to `1.0`. `scale` means ZOOM level, 1.0 means no zoom in or out
 
 ---
 
 # That cool embed image
 
-Also meta tag probably
-
 TODO
-
----
-
-```yaml
-layout: center
-```
-
-# SEO
 
 ---
 
 # Search Engine Optimization (SEO)
 
-Top links on Google results are clicked on first
-
-How do we get our website to show up first?
-
-This is SEO
-
----
-
-# What search engines look for
-
-TODO
+- When you try to find a website, where do you usually go first?
+  - **SEARCH ENGINES!!!**
+  - Higher ranking on search engines = more impressions
+- How do we get our website to show up first? This is what SEO is for!
+  - Making our websites attractive to search engine algorithims
 
 ---
 
-# What tags can help
+# What Search Engines Look For
 
-TODO
+- Keywords (title, description, tags)
+- Images to show the end user
+- High quality content/backlinks
+
+How do we make this information accessible to search engines? **Metadata!**
+
+---
+
+# Example SEO Head
+
+These tags should be in every HTML site you create!
+
+```html{2-3}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Best Hiking Trails in Northern Virginia</title>
+  <meta name="description" content="Discover top hiking trails in NoVA with maps.">
+
+  <meta property="og:title" content="Best Hiking Trails in Northern Virginia">
+  <meta property="og:description" content="Top routes, maps, and tips for every hiker.">
+  <meta property="og:image" content="https://example.com/images/nova-hikes.jpg">
+  <meta property="og:url" content="https://example.com/hiking/northern-virginia">
+</head>
+```
+
+---
+
+# Example SEO Head
+
+`<meta name="description">` describes your site, so putting useful keywords in here is very important.
+
+```html{5}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Best Hiking Trails in Northern Virginia</title>
+  <meta name="description" content="Discover top hiking trails in NoVA with maps.">
+
+  <meta property="og:title" content="Best Hiking Trails in Northern Virginia">
+  <meta property="og:description" content="Top routes, maps, and tips for every hiker.">
+  <meta property="og:image" content="https://example.com/images/nova-hikes.jpg">
+  <meta property="og:url" content="https://example.com/hiking/northern-virginia">
+</head>
+```
+
+---
+
+# Example SEO Head
+
+OpenGraph (og) is primarily used to control the appearance of your content on messaging and social media platforms (typically embeds). Having a descriptive image drives traffic to your site!
+
+```html{7-10}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Best Hiking Trails in Northern Virginia</title>
+  <meta name="description" content="Discover top hiking trails in NoVA with maps.">
+
+  <meta property="og:title" content="Best Hiking Trails in Northern Virginia">
+  <meta property="og:description" content="Top routes, maps, and tips for every hiker.">
+  <meta property="og:image" content="https://example.com/images/nova-hikes.jpg">
+  <meta property="og:url" content="https://example.com/hiking/northern-virginia">
+</head>
+```
 
 ---
 
@@ -166,7 +253,25 @@ TODO
 layout: center
 ```
 
-# Components
+<img src="/no-seo.png" />
+
+---
+
+```yaml
+layout: center
+```
+
+
+<img src="/with-seo.png">
+
+---
+
+```yaml
+layout: center
+```
+
+
+<img src="/dc-seo.png">
 
 ---
 
@@ -240,7 +345,7 @@ END DEFINITION
 - Nobody wants to look at my site
 - Optimize the site for mobile (viewport meta), and SEO (meta tags)
 
-[Shell code](https://drive.google.com/file/d/1tP-TSFGRk7qWJ_xpaivt2w9Z89lMF0k_/view?usp=sharing)
+[Shell Code](https://drive.google.com/file/d/1tP-TSFGRk7qWJ_xpaivt2w9Z89lMF0k_/view?usp=sharing) -> https://tinyurl.com/tjdevclub-shell-12
 
 ---
 
