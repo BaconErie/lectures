@@ -122,7 +122,17 @@ out
 
 # That cool embed image
 
+Also meta tag probably
+
 TODO
+
+---
+
+```yaml
+layout: center
+```
+
+# SEO
 
 ---
 
@@ -131,6 +141,8 @@ TODO
 Top links on Google results are clicked on first
 
 How do we get our website to show up first?
+
+This is SEO
 
 ---
 
@@ -143,6 +155,78 @@ TODO
 # What tags can help
 
 TODO
+
+---
+
+```yaml
+layout: center
+```
+
+# Components
+
+---
+
+# Components
+
+New concept
+
+Beyond plain HTML
+
+Extensive use in JS libraries
+
+Basically, reusable HTML templates with some logic
+
+---
+
+# Components example
+
+Repeating ourselves a lot, and gets annoying to type all of these, cluttered
+
+```html {monaco-run}
+<div style="border: solid">
+  <button>✕</button>
+  <p>Finish HW</p>
+  <p>
+    Labels:
+    <span style="background-color: red; color:white">most important</span>
+    <span style="background-color: blue; color:white">school</span>
+  </p>
+</div>
+
+<div style="border: solid">
+  <button>✕</button>
+  <p>Work on website</p>
+  <p>
+    Labels:
+    <span style="background-color: green; color:white">coding</span>
+  </p>
+</div>
+```
+
+---
+
+# Components example
+
+What if, single tag, makes us a task box with button and styles everything?
+
+```js
+
+DEFINE <Task> WITH ATTRIBUTES text, labels AS
+  <div style="border: solid">
+    <button>✕</button>
+    <p>{text}</p>
+    <p>
+      Labels: {labels}
+      <span style="background-color: gray; color:white">{label}</span>
+    </p>
+  </div>
+END DEFINITION
+```
+
+```html
+<Task text="Finish HW" labels="most important, school" />
+<Task text="Work on website" labels="coding" />
+```
 
 ---
 
