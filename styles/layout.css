@@ -8,7 +8,7 @@
   --slidev-font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   
   /* Monaco editor and execution variables */
-  --monaco-editor-height: 200px;
+  --monaco-editor-height: 180px;
   --monaco-execution-ratio: 0.7;
   --monaco-execution-height: calc(var(--monaco-editor-height) * var(--monaco-execution-ratio));
   --monaco-container-height: calc(var(--monaco-editor-height) + var(--monaco-execution-height));
@@ -288,4 +288,10 @@ body,
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Ensure the SEO "after" image fits with heading and text on the slide */
+.slidev-layout img[src$="/with-seo.png"],
+.slidev-layout img[src$="with-seo.png"] {
+  max-height: 50vh;
 }

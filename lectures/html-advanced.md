@@ -22,35 +22,20 @@ TJ Dev Club
 # Quick Basic HTML Refresher
 
 - Markup language, little logic, little styling
+  - NOT A PROGRAMMING LANGUAGE!!!!
 - Forms the structure of the website
 - \<tags\> and stuff
-
----
-
-# `\<div\>`
-
-Basic general use element for **blocks**, not inline
-
-Wrapping, making a box, menus, whatever needs to be a block.
-
-```html {monaco-run}
-Blah blah blah blah
-<div style="border: solid">Box. Not inline.</div>
-blah blah blah blah.
-```
-
----
-
-# `\<span\>`
-
-General use but inline.
-
-Not as commonly used, but helpful.
-
-```html {monaco-run}
-Only highlight what is
-<span style="border: solid">most important</span>
-in your notes
+<br><br>
+```html
+<!doctype html>
+<html>
+  <head>
+    <!-- metadata (e.g., title, seo stuff) -->
+  </head>
+  <body>
+    <!-- actual content of page (e.g., text, headers, images, you name it!) -->
+  </body>
+</html>
 ```
 
 ---
@@ -61,6 +46,10 @@ class: monaco-resizable
 
 # Basic text
 
+- Headers (increase in number, decrease in size): `<h[num]>`
+- Paragraphs: `<p>`
+- Bold and italic: `<strong>` and `<em>`
+
 ```html {monaco-run}
 <h1>Heading 1</h1>
 <h2>Heading 2</h2>
@@ -68,184 +57,242 @@ class: monaco-resizable
 <h4>Heading 4</h4>
 <h5>Heading 5</h5>
 <h6>Heading 6</h6>
-<p>This is a paragraph</p>
+<p>This <strong>is</strong> <em>a</em> paragraph</p>
 <p>Auto line breaks after paragraph</p>
 ```
 
 ---
 
 ```yaml
-layout: center
+layout: default
 ```
 
-# Some more advanced tags
+# Example HTML Page
+
+```html {monaco-run}
+<!doctype html>
+<html>
+    <head>
+        <title>WELCOME TO DEV CLUB BLOG</title>
+    </head>
+    <body>
+        <h1>Dev Club Blog</h1>
+        <p> a developers dream! </p>
+        <br>
+        <h2>why i hate pigeons</h2>
+        <h4>by dev club officers</h4>
+        <br>
+        <p>i hate pigeonins because they are <strong>EVIL!!!!</strong>. i mean <em>really</em> think about it, why wouldn't the <a href="https://cia.gov">CIA</a> use pigeons as spying devices. it's honestly super crazy that people think pigeons are real. look at this leaked image
+        <img src="https://preview.redd.it/row4ll2734v21.jpg?width=640&crop=smart&auto=webp&s=9175ddb3be60ac4b0de319d6f2aabd3ced84a78d">
+    </body>
+</html>
+```
 
 ---
 
-# `<meta>`
+# \<div\>
+
+Basic general use element for **blocks** (not inline!). Wrapping, making a box, menus, whatever needs to be a block.
+
+```html {monaco-run}
+Blah blah blah blah
+<div style="border: solid">Box. Not inline.</div>
+blah blah blah blah.
+```
+
+---
+
+# \<span\>
+
+General use inline element, doesn't make any changes to the element but can be used to apply classes, animations, or anything else you want.
+
+```html {monaco-run}
+Only highlight what is
+<span style="border: solid">most important</span>
+in your notes
+```
+
+---
+
+# \<meta\>
 
 Various uses:
 
-- Metadata
+- **Meta**data
 - Instructions for browser
-- SEO
+- Search Engine Optimization (SEO)
 - HTTP header simulation
+
+<br>
+```html
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+```
 
 ---
 
-# Viewport meta
+# \<meta name="viewport"\>
 
-Mobile devices act weird
-
-Pretend their screen is really big, then zoom everything out so the entire page
-can be see
-
-Why? Many (old) sites don't optimize for mobile, so they only look good on large
+- Mobile devices tend to act weird (thanks iOS 28)
+- Usually mobile devices pretend that their screen is really big, then zoom everything out so the entire page can be seen
+- Why? Many (old) sites don't optimize for mobile, so they only look good on large
 screens.
 
 ---
 
-# Viewport meta
+# \<meta name="viewport"\>
 
-Simulated mobile view. Everything is too small, user must manually zoom in.
+On a mobile device, because everything is so small, the user must manually zoom in (very bad UX!). Can you even read anything on this page?
 
 <img src="/zoomedout.png" alt="zoomedout" style="width: auto; height:300px;"/>
 
 ---
 
-# Viewport meta
+# \<meta name="viewport"\>
 
-What we want. We tell the phone not to automatically zoom out.
+This is what we want. By including `<meta name="viewport">`, mobile devices don't automatically zoom out and our website looks a *lot* nicer.
 
 <img src="/advanced-normal.png" alt="Normal" style="width: auto; height:300px;"/>
 
 ---
 
-# Viewport meta
+# \<meta name="viewport"\>
+
+Now that I know about `<meta name="viewport">`, how can I use it?
 
 ```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- no end tag -->
+  <!-- other metadata and stuff -->
+</head>
 ```
 
 Set `width` to `device-width`. `width` means VIRTUAL VIEWPORT width
 
-Set `initial-scale` to `1.0`. `scale` means ZOOM level, 1.0 means no zoom in or
-out
-
----
-
-```yaml
-layout: center
-```
-
-# SEO and Getting Clicks
+Set `initial-scale` to `1.0`. `scale` means ZOOM level, 1.0 means no zoom in or out
 
 ---
 
 # Search Engine Optimization (SEO)
 
-How do we get people to visit our site?
-
-How do we get first on Google?
-
-We will focus on basic meta tags for SEO and social media previews today.
+- When you try to find a website, where do you usually go first?
+  - **SEARCH ENGINES!!!**
+  - Higher ranking on search engines = more impressions
+- How do we get our website to show up first? This is what SEO is for!
+  - Making our websites attractive to search engine algorithims
+  - How do we rank first on Google?
 
 ---
 
-# Basic SEO Tags
+# What Search Engines Look For
 
-Really used by Search Engines
+- Keywords (title, description, tags)
+- Images to show the end user
+- High quality content/backlinks
 
-Result snippets, or keywords
+How do we make this information accessible to search engines? **Metadata!**
 
-```html
-<!-- Title is really basic, but super important -->
-<title>Your Page Title</title>
+---
 
-<meta
-  name="description"
-  content="Thomas Jefferson High School for Science and Technology Developer Club
-   - Learn programming, build projects, and connect with fellow developers."
-/>
-<meta
-  name="keywords"
-  content="TJHSST Dev Club, Thomas Jefferson, programming, coding, development,
-   computer science, web development, software engineering"
-/>
-<meta name="author" content="TJHSST Dev Club" />
+# Example SEO Head
+
+These tags should be in every HTML site you create!
+
+```html{2-3}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Best Hiking Trails in Northern Virginia</title>
+  <meta name="description" content="Discover top hiking trails in NoVA with maps.">
+  <meta
+    name="keywords"
+    content="TJHSST Dev Club, Thomas Jefferson, programming, coding, development,
+     computer science, web development, software engineering"
+  />
+
+  <meta property="og:title" content="Best Hiking Trails in Northern Virginia">
+  <meta property="og:description" content="Top routes, maps, and tips for every hiker.">
+  <meta property="og:image" content="https://example.com/images/nova-hikes.jpg">
+  <meta property="og:url" content="https://example.com/hiking/northern-virginia">
+</head>
 ```
 
 ---
 
-# Open Graph (OG)
+# Example SEO Head
+The title on your website is **VERY IMPORTANT**!!!
+```html{4}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Best Hiking Trails in Northern Virginia</title>
+  <meta name="description" content="Discover top hiking trails in NoVA with maps.">
+  <meta
+    name="keywords"
+    content="TJHSST Dev Club, Thomas Jefferson, programming, coding, development,
+     computer science, web development, software engineering"
+  />
 
-Used by social media sites (e.g. Discord, Facebook) to generate rich previews
-
-<img src="/advanced-open-graph.png" alt="OG Example" style="width: auto; height:300px;"/>
-
----
-
-# Open Graph (OG) tags
-
-4 required
-
-```html
-<meta property="og:title" content="Your Page Title" />
-
-<!-- website, music, video, article, book. see https://ogp.me/#types -->
-<meta property="og:type" content="website" />
-
-<!-- Image people see. Must be absolute URL, hosted on either your server or a CDN -->
-<meta property="og:image" content="https://example.com/image.jpg" />
-
-<!-- Permanent URL of your page; probably don't include URL params, for example -->
-<meta property="og:url" content="https://example.com/page" />
+  <meta property="og:title" content="Best Hiking Trails in Northern Virginia">
+  <meta property="og:description" content="Top routes, maps, and tips for every hiker.">
+  <meta property="og:image" content="https://example.com/images/nova-hikes.jpg">
+  <meta property="og:url" content="https://example.com/hiking/northern-virginia">
+</head>
 ```
 
 ---
 
-# TJ Dev Club OG example
+# Example SEO Head
 
-Description is optional but recommended
+`<meta name="description">` and `<meta name="keywords">` describe your site, so putting useful keywords in here is **very important**.
 
-```html
-<meta property="og:title" content="TJHSST Dev Club" />
-<meta
-  property="og:description"
-  content="Thomas Jefferson High School for Science and Technology Developer Club."
-/>
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://tjdev.club/" />
-<meta property="og:site_name" content="TJHSST Dev Club" />
-<meta property="og:locale" content="en_US" />
-<meta property="og:image" content="https://tjdev.club/og-image.png" />
-<meta
-  property="og:image:secure_url"
-  content="https://tjdev.club/og-image.png"
-/>
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:alt" content="TJHSST Dev Club logo" />
+```html{5-11}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Best Hiking Trails in Northern Virginia</title>
+  <meta name="description" content="Discover top hiking trails in NoVA with maps.">
+  <!-- this is used for search engine keywords, so definitely do this!!! (comma separated) -->
+  <meta
+    name="keywords"
+    content="TJHSST Dev Club, Thomas Jefferson, programming, coding, development,
+     computer science, web development, software engineering"
+  />
+
+  <meta property="og:title" content="Best Hiking Trails in Northern Virginia">
+  <meta property="og:description" content="Top routes, maps, and tips for every hiker.">
+  <meta property="og:image" content="https://example.com/images/nova-hikes.jpg">
+  <meta property="og:url" content="https://example.com/hiking/northern-virginia">
+</head>
 ```
 
 ---
 
-# Twitter Cards
+# Example SEO Head
 
-Basically OpenGraph, but for Twitter instead of Facebook
+OpenGraph (og) is primarily used to control the appearance of your content on messaging and social media platforms (typically embeds). Having a descriptive image drives traffic to your site!
 
-```html
-<!-- Twitter Cards -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="TJHSST Dev Club" />
-<meta
-  name="twitter:description"
-  content="Thomas Jefferson High School for Science and Technology Developer Club
-   -- Learn programming, build projects, and connect with fellow developers."
-/>
-<meta name="twitter:image" content="https://tjdev.club/og-image.png" />
+```html{12-19}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Best Hiking Trails in Northern Virginia</title>
+  <meta name="description" content="Discover top hiking trails in NoVA with maps.">
+  <meta
+    name="keywords"
+    content="TJHSST Dev Club, Thomas Jefferson, programming, coding, development,
+     computer science, web development, software engineering"
+  />
+
+  <meta property="og:title" content="Best Hiking Trails in Northern Virginia">
+  <!-- description of your site... pretty self explanatory -->
+  <meta property="og:description" content="Top routes, maps, and tips for every hiker.">
+  <!-- Image people see. Must be absolute URL, hosted on either your server or a CDN -->
+  <meta property="og:image" content="https://example.com/images/nova-hikes.jpg">
+  <!-- permanent URL of your site... should be static! -->
+  <meta property="og:url" content="https://example.com/hiking/northern-virginia">
+</head>
 ```
-
-Add as much info as you can to your websites to improve SEO and link previews
 
 ---
 
@@ -253,25 +300,40 @@ Add as much info as you can to your websites to improve SEO and link previews
 layout: center
 ```
 
-# Components
+<img src="/no-seo.png" />
+
+---
+
+```yaml
+layout: center
+```
+
+
+<img src="/with-seo.png">
+
+
+---
+
+```yaml
+layout: center
+```
+
+
+<img src="/dc-seo.png">
 
 ---
 
 # Components
-
-New concept
-
-Beyond plain HTML
-
-Extensive use in JS libraries
-
-Basically, reusable HTML templates with some logic
+- New concept that allow us to go beyond plain HTML
+- Extensive use in JS libraries
+  - Not just limited to JS (e.g., Python w/ Jinja)
+- Reusable HTML templates with some logic
 
 ---
 
-# Components example
+# Components Example
 
-Repeating ourselves a lot, and gets annoying to type all of these, cluttered
+Repeating ourselves a lot, and gets annoying to type all of these, cluttered websites
 
 ```html {monaco-run}
 <div style="border: solid">
@@ -296,7 +358,7 @@ Repeating ourselves a lot, and gets annoying to type all of these, cluttered
 
 ---
 
-# Components example
+# Components Example
 
 What if, single tag, makes us a task box with button and styles everything?
 
@@ -327,7 +389,7 @@ END DEFINITION
 - Nobody wants to look at my site
 - Optimize the site for mobile (viewport meta), and SEO (meta tags)
 
-[Shell code](https://drive.google.com/file/d/1tP-TSFGRk7qWJ_xpaivt2w9Z89lMF0k_/view?usp=sharing)
+[Shell Code](https://drive.google.com/file/d/1tP-TSFGRk7qWJ_xpaivt2w9Z89lMF0k_/view?usp=sharing) -> https://tinyurl.com/tjdevclub-shell-12
 
 ---
 
