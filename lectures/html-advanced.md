@@ -286,8 +286,7 @@ These tags should be in every HTML site you create!
   <meta name="description" content="Discover top hiking trails in NoVA with maps.">
   <meta
     name="keywords"
-    content="TJHSST Dev Club, Thomas Jefferson, programming, coding, development,
-     computer science, web development, software engineering"
+    content="hiking, northern virginia, trails, maps, travel"
   />
 
   <meta property="og:title" content="Best Hiking Trails in Northern Virginia">
@@ -311,8 +310,7 @@ The title on your website is **VERY IMPORTANT**!!!
   <meta name="description" content="Discover top hiking trails in NoVA with maps.">
   <meta
     name="keywords"
-    content="TJHSST Dev Club, Thomas Jefferson, programming, coding, development,
-     computer science, web development, software engineering"
+    content="hiking, northern virginia, trails, maps, travel"
   />
 
   <meta property="og:title" content="Best Hiking Trails in Northern Virginia">
