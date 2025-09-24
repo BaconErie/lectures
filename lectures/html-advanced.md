@@ -4,22 +4,63 @@ title: Advanced HTML
 ---
 
 # \<html\> (adv.)
+
 TJ Dev Club
 
 ---
 
-# HTML
+# Quick HTML Refresher
 
-It's pretty:
-- Awesome
-  - s
-- Cool
-- Tuff
-- Easy to brag about
+- Markup language, little logic, little styling
+- Forms the structure of the website
+- \<tags\> and stuff
 
 ---
-layout: default
+
+# Most important tags review: `\<div\>`
+
+Basic general use element for **blocks**, not inline
+
+Wrapping, making a box, menus, whatever needs to be a block.
+
+```html {monaco-run}
+Blah blah blah blah
+<div style="border: solid">Box. Not inline.</div>
+blah blah blah blah.
+```
+
 ---
+
+# Most important tags review: `\<span\>`
+
+General use but inline.
+
+Not as commonly used, but helpful.
+
+```html {monaco-run}
+Only highlight what is
+<span style="border: solid">most important</span>
+in your notes
+```
+
+---
+
+# Review: basic text
+
+```html {monaco-run}
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+<h5>Heading 5</h5>
+<h6>Heading 6</h6>
+<p>This is a paragraph</p>
+<p>Auto line breaks after paragraph</p>
+```
+
+---
+
+## layout: default
 
 # HTML Example
 
@@ -29,8 +70,8 @@ layout: default
 ```
 
 ---
-layout: default
----
+
+## layout: default
 
 # TypeScript Example
 
@@ -64,24 +105,25 @@ console.log(x ** 5);
 console.log(x ** 5);
 
 console.log(x ** 5);
-
-
 ```
 
 ---
-layout: default
----
+
+## layout: default
+
 # MOVE MOVE MOVE
 
 ````md magic-move
 ```js
-console.log(`Step ${1}`)
+console.log(`Step ${1}`);
 ```
+
 ```js
-console.log(`Step ${1 + 1}`)
+console.log(`Step ${1 + 1}`);
 ```
+
 ```ts
-console.log(`Step ${3}` as string)
+console.log(`Step ${3}` as string);
 ```
 ````
 
@@ -90,9 +132,8 @@ console.log(`Step ${3}` as string)
 # Diagrams
 
 You can also do diagrams in Slidev. Probably useful for Dev Club at some point.
-I still prefer Excalidraw though...
-<br>
-<br>
+I still prefer Excalidraw though... <br> <br>
+
 ```mermaid
 flowchart LR
   A[Start] --> B{Decision}
@@ -110,16 +151,17 @@ Hover on the bottom-left corner to see the navigation's controls panel
 
 ## Keyboard Shortcuts
 
-|     |     |
-| --- | --- |
-| <kbd>space</kbd> / <kbd>tab</kbd> / <kbd>right</kbd> | next animation or slide |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
+|                                                      |                             |
+| ---------------------------------------------------- | --------------------------- |
+| <kbd>space</kbd> / <kbd>tab</kbd> / <kbd>right</kbd> | next animation or slide     |
+| <kbd>left</kbd> / <kbd>shift</kbd><kbd>space</kbd>   | previous animation or slide |
+| <kbd>up</kbd>                                        | previous slide              |
+| <kbd>down</kbd>                                      | next slide                  |
 
 ---
-layout: image-right
-image: https://cover.sli.dev
+
+layout: image-right image: https://cover.sli.dev
+
 ---
 
 # Code
@@ -128,22 +170,22 @@ Use code snippets and get the highlighting directly!
 
 ```ts
 interface User {
-  id: number
-  firstName: string
-  lastName: string
-  role: string
+  id: number;
+  firstName: string;
+  lastName: string;
+  role: string;
 }
 
 function updateUser(id: number, update: Partial<User>) {
-  const user = getUser(id)
-  const newUser = { ...user, ...update }
-  saveUser(id, newUser)
+  const user = getUser(id);
+  const newUser = { ...user, ...update };
+  saveUser(id, newUser);
 }
 ```
 
 ---
-layout: default
----
+
+## layout: default
 
 # HTML Code Highlighting Demo
 
@@ -151,7 +193,7 @@ layout: default
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Highlight Demo</title>
   </head>
   <body>
@@ -168,7 +210,7 @@ layout: default
 ```
 
 ---
-layout: last
----
+
+## layout: last
 
 # \</lecture\>
