@@ -9,7 +9,17 @@ TJ Dev Club
 
 ---
 
-# Quick HTML Refresher
+# Table of Contents
+
+1. Quick Basic HTML Refresher
+2. Advanced Tags
+3. SEO and Getting Clicks
+4. Thinking about components
+5. Mini Project
+
+---
+
+# Quick Basic HTML Refresher
 
 - Markup language, little logic, little styling
   - NOT A PROGRAMMING LANGUAGE!!!!
@@ -163,12 +173,6 @@ Set `initial-scale` to `1.0`. `scale` means ZOOM level, 1.0 means no zoom in or 
 
 ---
 
-# That cool embed image
-
-TODO
-
----
-
 # Search Engine Optimization (SEO)
 
 - When you try to find a website, where do you usually go first?
@@ -176,6 +180,7 @@ TODO
   - Higher ranking on search engines = more impressions
 - How do we get our website to show up first? This is what SEO is for!
   - Making our websites attractive to search engine algorithims
+  - How do we rank first on Google?
 
 ---
 
@@ -199,6 +204,34 @@ These tags should be in every HTML site you create!
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Best Hiking Trails in Northern Virginia</title>
   <meta name="description" content="Discover top hiking trails in NoVA with maps.">
+  <meta
+    name="keywords"
+    content="TJHSST Dev Club, Thomas Jefferson, programming, coding, development,
+     computer science, web development, software engineering"
+  />
+
+  <meta property="og:title" content="Best Hiking Trails in Northern Virginia">
+  <meta property="og:description" content="Top routes, maps, and tips for every hiker.">
+  <meta property="og:image" content="https://example.com/images/nova-hikes.jpg">
+  <meta property="og:url" content="https://example.com/hiking/northern-virginia">
+</head>
+```
+
+---
+
+# Example SEO Head
+The title on your website is **VERY IMPORTANT**!!!
+```html{4}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Best Hiking Trails in Northern Virginia</title>
+  <meta name="description" content="Discover top hiking trails in NoVA with maps.">
+  <meta
+    name="keywords"
+    content="TJHSST Dev Club, Thomas Jefferson, programming, coding, development,
+     computer science, web development, software engineering"
+  />
 
   <meta property="og:title" content="Best Hiking Trails in Northern Virginia">
   <meta property="og:description" content="Top routes, maps, and tips for every hiker.">
@@ -211,14 +244,20 @@ These tags should be in every HTML site you create!
 
 # Example SEO Head
 
-`<meta name="description">` describes your site, so putting useful keywords in here is very important.
+`<meta name="description">` and `<meta name="keywords">` describe your site, so putting useful keywords in here is **very important**.
 
-```html{5}
+```html{5-11}
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Best Hiking Trails in Northern Virginia</title>
   <meta name="description" content="Discover top hiking trails in NoVA with maps.">
+  <!-- this is used for search engine keywords, so definitely do this!!! (comma separated) -->
+  <meta
+    name="keywords"
+    content="TJHSST Dev Club, Thomas Jefferson, programming, coding, development,
+     computer science, web development, software engineering"
+  />
 
   <meta property="og:title" content="Best Hiking Trails in Northern Virginia">
   <meta property="og:description" content="Top routes, maps, and tips for every hiker.">
@@ -233,16 +272,24 @@ These tags should be in every HTML site you create!
 
 OpenGraph (og) is primarily used to control the appearance of your content on messaging and social media platforms (typically embeds). Having a descriptive image drives traffic to your site!
 
-```html{7-10}
+```html{12-19}
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Best Hiking Trails in Northern Virginia</title>
   <meta name="description" content="Discover top hiking trails in NoVA with maps.">
+  <meta
+    name="keywords"
+    content="TJHSST Dev Club, Thomas Jefferson, programming, coding, development,
+     computer science, web development, software engineering"
+  />
 
   <meta property="og:title" content="Best Hiking Trails in Northern Virginia">
+  <!-- description of your site... pretty self explanatory -->
   <meta property="og:description" content="Top routes, maps, and tips for every hiker.">
+  <!-- Image people see. Must be absolute URL, hosted on either your server or a CDN -->
   <meta property="og:image" content="https://example.com/images/nova-hikes.jpg">
+  <!-- permanent URL of your site... should be static! -->
   <meta property="og:url" content="https://example.com/hiking/northern-virginia">
 </head>
 ```
@@ -264,6 +311,7 @@ layout: center
 
 <img src="/with-seo.png">
 
+
 ---
 
 ```yaml
@@ -276,20 +324,16 @@ layout: center
 ---
 
 # Components
-
-New concept
-
-Beyond plain HTML
-
-Extensive use in JS libraries
-
-Basically, reusable HTML templates with some logic
+- New concept that allow us to go beyond plain HTML
+- Extensive use in JS libraries
+  - Not just limited to JS (e.g., Python w/ Jinja)
+- Reusable HTML templates with some logic
 
 ---
 
-# Components example
+# Components Example
 
-Repeating ourselves a lot, and gets annoying to type all of these, cluttered
+Repeating ourselves a lot, and gets annoying to type all of these, cluttered websites
 
 ```html {monaco-run}
 <div style="border: solid">
@@ -314,7 +358,7 @@ Repeating ourselves a lot, and gets annoying to type all of these, cluttered
 
 ---
 
-# Components example
+# Components Example
 
 What if, single tag, makes us a task box with button and styles everything?
 
