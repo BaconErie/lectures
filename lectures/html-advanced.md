@@ -134,14 +134,6 @@ out
 
 ---
 
-# That cool embed image
-
-Also meta tag probably
-
-TODO
-
----
-
 ```yaml
 layout: center
 ```
