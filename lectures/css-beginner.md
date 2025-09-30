@@ -219,3 +219,181 @@ You can get the hex code from a color picker, such as the
 [Google color picker](https://www.google.com/search?q=color+picker).
 
 Check in with your officer once you have done this.
+
+---
+
+# Changing the font color
+
+You should have:
+
+```html{9-11}
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-color: blue;
+      }
+
+      h1 {
+        color: #ffffff;
+      }
+    </style>
+  </head>
+</html>
+```
+
+---
+
+# The \* selector
+
+What if we want to change the font color for all elements? It would be tedious
+or even impossible to select each element individually.
+
+Instead, we can select all elements using `*`, instead of the name of an
+element.
+
+Try to change the font color of all elements to white right now.
+
+---
+
+# Changing the font color
+
+You should have:
+
+```html{9-11}
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-color: blue;
+      }
+
+      * {
+        color: #ffffff;
+      }
+    </style>
+  </head>
+</html>
+```
+
+We removed the `h1` styling because it is no longer necessary.
+
+---
+
+# The meaning of "Cascading"
+
+Add back a declaration block for `h1` elements. Set the font color to red.
+
+```css{5-11}
+body {
+  background-color: blue;
+}
+
+* {
+  color: #ffffff;
+}
+
+h1 {
+  color: red;
+}
+```
+
+We now have two declarations that changes the font color for `h1` elements: the
+one selected by `*`, and the one selected by `h1`.
+
+Which one is used?
+
+---
+
+```yaml
+layout: image-right
+image: /beginner-css-cascading.png
+backgroundSize: 70%
+```
+
+# The meaning of "Cascading"
+
+Notice that now the h1 tag is now red, not white.
+
+The most specific declaration is used for styling.
+
+This is what "cascading" means: authority starts from the most broad declaration
+and "cascades" down to the most specific.
+
+---
+
+# class and id
+
+The "Picture of me:" text should be special. Let's change the color of only that
+text to yellow.
+
+Let's try to do it by selecting the `p` tags, and coloring them green. Do you
+see the problem?
+
+```css
+p {
+  color: yellow;
+}
+```
+
+---
+
+```yaml
+layout: image-right
+image: /beginner-css-before-id.png
+backgroundSize: 70%
+```
+
+# class and id
+
+Ignoring the readability problem, notice that ALL `p` elements have green text.
+
+We need some way to specify which element we are selecting, some _identifier_.
+
+---
+
+# class and id
+
+To do this, we need to go back into the HTML.
+
+Find an element you want to style. Then, add the HTML attribute `id=""`. Put a
+relevant and useful identifier between the quotes. Make sure not to use spaces.
+
+```html
+<body>
+  <div>
+    <p id="picture-caption">Picture of me:</p>
+  </div>
+</body>
+```
+
+---
+
+```yaml
+layout: image-right
+image: /beginner-css-after-id.png
+backgroundSize: 70%
+```
+
+# class and id
+
+Notice now only the "Picture of me" text is green.
+
+Check in with your officer and make sure only the selected element with the id
+is green.
+
+---
+
+# class and id
+
+---
+
+# Cool selectors
+
+font, border, shadow,
+
+# Sizing..
+
+insane madness.
