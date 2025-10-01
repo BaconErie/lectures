@@ -388,12 +388,147 @@ is green.
 
 # class and id
 
+What if we want to style multiple elements the same way?
+
+We can't repeat the id attribute; it's unique to only one element:
+
+```html
+<!-- THIS DOES NOT WORK!!! -->
+<p id="green-color">Some body text</p>
+<p id="green-color">Some more body text</p>
+```
+
 ---
 
-# Cool selectors
+# class and id
 
-font, border, shadow,
+Instead, replace `id` with `class`:
 
-# Sizing..
+```html
+<p class="green-color">Some body text</p>
+<p class="green-color">Some more body text</p>
+```
 
-insane madness.
+and then...
+
+---
+
+# class and id
+
+In our CSS selectors, use `.` instead of `#`.
+
+```css
+.green-color {
+  color: green;
+}
+```
+
+**Remember: Nothing selects element type, period is class, hashtag is id**
+
+---
+
+# Cool CSS properties
+
+We will now just go over some cool CSS properties to make your site look modern.
+
+You can find more on Google, or at
+[MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)
+
+---
+
+# Border
+
+Add some borders to ground your divs and make it clear that things are
+segmented.
+
+```html {monaco-run}
+<style>
+  div {
+    border-style: solid; /* Solid border; other options include none, dotted, double, inset */
+    border-width: 2px; /* Set border thickness to 2px */
+    border-color: #999999; /* Set border to a nice gray color */
+  }
+</style>
+
+<div>Hello.</div>
+```
+
+---
+
+# border-radius
+
+Nothing says "modern" more than rounded corners.
+
+```html {monaco-run}
+<style>
+  div {
+    border-radius: 7px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #999999;
+  }
+</style>
+
+<div>Hello.</div>
+```
+
+---
+
+# box-shadow
+
+Add a nice shadow to make things look floating. Usually you can just use a
+[box shadow CSS generator](https://cssgenerator.org/box-shadow-css-generator.html)
+to do most of the work for you; just copy the box-shadow declaration.
+
+```html {monaco-run}
+<style>
+  div {
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.82);
+  }
+</style>
+
+<div>Hello.</div>
+<br />
+<div>Hi.</div>
+```
+
+---
+
+# font-family
+
+Changes the font to something else.
+
+WARNING: These will only work if the font is installed on the user's computer!
+We will talk about how to add fonts in webpages in a future lesson.
+
+```html{monaco-run}
+<style>
+  .trebuchet {
+    font-family:
+      "Trebuchet MS", sans-serif; /* Use Open Sans if it exists, otherwise, use the default "sans-serif" font. */
+  }
+</style>
+
+<div>This is the default font.</div>
+
+<div class="trebuchet">This is Trebuchet MS.</div>
+```
+
+---
+
+# Mini-project
+
+Make your site or the template site look more modern.
+
+Ideas: Add dark mode, make the colors nice, add dividers, add shadows, round
+corners
+
+Next week: Sizing elements, how to layout and position our elements.
+
+---
+
+```yaml
+layout: last
+```
+
+# \</style\>
