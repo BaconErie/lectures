@@ -178,6 +178,17 @@ Set the background color to something not completely opaque, and then add
 
 # Custom Fonts
 
+```css
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("IBMPlexSans-VariableFont_wdth,wght.ttf") format("truetype");
+}
+
+* {
+  font-family: "IBM Plex Mono";
+}
+```
+
 ---
 
 # Custom Fonts
@@ -186,6 +197,7 @@ Get a copy of
 [IBM Plex Mono](https://drive.google.com/file/d/1KOSMCZa8GYINVzqGAbfB8sRINGK2nThf/view?usp=sharing)
 or find another font on [fonts.google.com](https://fonts.google.com/).
 
-Download the template HTML file.
+Download the template
+[HTML file](https://drive.google.com/file/d/1dk2fo9O_XX7G73Ve4CqzlhtjlepqjKyH/view?usp=sharing).
 
 ---
