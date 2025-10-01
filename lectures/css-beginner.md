@@ -28,7 +28,8 @@ sizes, fonts, etc.
 
 Open up your HTML file from last week.
 
-If you don't have it, you can use this template: LINK HERE
+If you don't have it, you can use
+[this template](https://drive.google.com/file/d/1BCSxRPmv6Wb7vooAqqSh4Bw92AnhG3BI/view?usp=sharing)
 
 ---
 
