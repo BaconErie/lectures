@@ -54,8 +54,6 @@ Here's a example of CSS usage in HTML to hopefully refresh your mind:
 
 ---
 
----
-
 # Layouts 101
 
 Before using flexboxes, let's understand how the page stacks by **default**: block elements go from top-to-bottom. These are called **display layouts** and they are managed with the `display` CSS property.
